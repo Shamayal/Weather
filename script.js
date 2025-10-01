@@ -41,3 +41,7 @@ function displayWeather(data) {
   const weatherIcon = document.getElementById('weather-icon');
   const hourlyForecastDiv = document.getElementById('hourly-forecast');
 }
+
+function displayHourlyForecast(hourlyData) {
+  
+}
