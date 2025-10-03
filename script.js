@@ -51,8 +51,6 @@ function displayHourlyForecast(hourlyData) {
     const hour = dateTime.getHours();
     const temperature = Math.round(item.main.temp - 273.15); // Convert to Celsius
     const iconCode = item.weather[0].icon;
-    const iconUrl = `https://openweathermap.org/img/wn/${iconCode}.png`;
-
-    
+    const iconUrl = `https://openweathermap.org/img/wn/${iconCode}.png`; // change to new api
   })
 }
