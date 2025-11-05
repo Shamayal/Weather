@@ -1,5 +1,5 @@
-let apiKey;
-let apiURl;
+let apiKey = API_KEY;
+let apiURl = 'https://api.openweathermap.org/data/2.5/weather';
 
 const cityInput = document.getElementById('city');
 const searchButton = document.getElementById('searchButton');
