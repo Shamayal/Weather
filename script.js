@@ -13,3 +13,18 @@ searchButton.addEventListener('click', () => {
     getWeather(city);
   }
 })
+
+function getWeather(city) {
+  const url = `${apiURl}?q=${city}&appid=${apiKey}&units=metric`;
+  
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        locationElement.textContent = data.name;
+        temperatureElement.textContent = `${Math.round(data.main.temp)}°C`
+        descriptionElement.textContent = data.weather[0].description;
+    })
+    .catch(error => {
+      console.error('Error fetching weather data:', error);
+    })
+}
