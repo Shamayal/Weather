@@ -22,6 +22,7 @@ function getWeather(city) {
     .then(data => {
         locationElement.textContent = data.name;
         temperatureElement.textContent = `${Math.round(data.main.temp)}°C`
+        humidityElement.textContent = `${data.main.humidity}%`
         descriptionElement.textContent = data.weather[0].description;
     })
     .catch(error => {
