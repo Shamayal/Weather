@@ -15,17 +15,15 @@ searchButton.addEventListener('click', () => {
 })
 
 function getWeather(city) {
-  const url = `${apiURl}?q=${city}&appid=${apiKey}&units=metric`;
-  
-  fetch(url)
+  fetch(`/weather?city=${city}`)
     .then(response => response.json())
     .then(data => {
-        locationElement.textContent = data.name;
-        temperatureElement.textContent = `${Math.round(data.main.temp)}°C`
-        humidityElement.textContent = `${data.main.humidity}%`
-        descriptionElement.textContent = data.weather[0].description;
+      locationElement.textContent = data.name;
+      temperatureElement.textContent = `${Math.round(data.main.temp)}°C`;
+      descriptionElement.textContent = data.weather[0].description;
+      humidityElement.textContent = `${data.main.humidity}%`;
     })
     .catch(error => {
       console.error('Error fetching weather data:', error);
-    })
+    });
 }
