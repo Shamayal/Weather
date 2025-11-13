@@ -1,5 +1,8 @@
 body {
-  background: lightpink;
+  background-image: url("../assets/bg_image.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   align-items: center;
