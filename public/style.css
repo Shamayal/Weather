@@ -37,7 +37,7 @@ body::before {
   z-index: 1;
   background: linear-gradient(to top, rgb(0, 0, 0, 0.15), rgb(255, 255, 255, 0.15));
   border-radius: 12px;
-  backdrop-filter: blur(100px);
+  backdrop-filter: blur(25px);
   padding: 20px;
 }
 
@@ -54,12 +54,12 @@ body::before {
   outline: none;
   font-weight: 500;
   transition: 0.25s border;
-  padding-right: 45px;
 }
 
 .city-input:focus {
-  border: 3px solid rgb(0, 0, 0, 0.15);
+ border: 3px solid rgb(0, 0, 0, 0.15);
 }
+
 .city-input::placeholder {
   color: rgb(255, 255, 255, 0.75);
 }
@@ -73,68 +73,4 @@ body::before {
   display: flex;
   border: none;
   cursor: pointer;
-}
-
-h2, label, p {
-  color: black;
-  margin: 8px 0;
-}
-
-input {
-  width: calc(100% - 16px);
-  padding: 8px;
-  box-sizing: border-box;
-  border-radius: 10px;
-  border: 1px solid white;
-  margin-top: 20px;
-}
-
-button:hover {
-  /* background: palevioletred; */
-}
-
-#temp-div p {
-  font-size: 60px;
-  margin-top: -30px;
-}
-
-#weather-info {
-  font-size: 20px;
-}
-
-#weather-icon {
-  width: 200px;
-  height: 200px;
-  margin: 0 auto 10px;
-  margin-bottom: 0;
-  display: none;
-}
-
-#hourly-forecast {
-  margin-top: 50px;
-  overflow-x: auto;
-  white-space: nowrap;
-  display: flex;
-  justify-content: space-between;
-}
-
-.hourly-item {
-  flex: 0 0 auto;
-  width: 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-right: 10px;
-  color: white;
-}
-
-.hourly-item img {
-  width: 30px;
-  height: 30px;
-  margin-bottom: 5px;
-}
-
-#hourly-heading {
-  color: #fff;
-  margin-top: 10px;
 }
