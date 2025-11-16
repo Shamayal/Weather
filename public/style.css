@@ -173,3 +173,13 @@ body::before {
   width: 35px;
   height: 35px;
 }
+
+/* Search City Message */
+.section-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 15px;
+  margin-top: 25%;
+}
