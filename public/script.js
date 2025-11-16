@@ -7,6 +7,14 @@ const weatherInfoSection = document.querySelector('.weather-info');
 const notFoundSection = document.querySelector('.not-found');
 const searchCitySection = document.querySelector('.search-city');
 
+const cityTxt = document.querySelector('city-txt');
+const tempTxt = document.querySelector('temp-txt');
+const conditionTxt = document.querySelector('condition-txt');
+const humidityValueTxt = document.querySelector('humidity-value-txt');
+const windValueTxt = document.querySelector('wind-value-txt');
+const weatherSummaryImg = document.querySelector('weather-summary-img');
+const currentDateTxt = document.querySelector('current-date-txt');
+
 searchButton.addEventListener('click', () => {
   if (cityInput.value.trim() != '') {
     updateWeatherInfo(cityInput.value);
@@ -44,6 +52,9 @@ async function updateWeatherInfo(city) {
     weather: [{id, main}],
     wind: {speed}
   } = weatherData
+
+  cityTxt.textContent = country
+  tempTxt.textContent = temp + ' °C'
 
   showDisplaySection(weatherInfoSection);
 }
