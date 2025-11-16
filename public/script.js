@@ -7,13 +7,13 @@ const weatherInfoSection = document.querySelector('.weather-info');
 const notFoundSection = document.querySelector('.not-found');
 const searchCitySection = document.querySelector('.search-city');
 
-const cityTxt = document.querySelector('city-txt');
-const tempTxt = document.querySelector('temp-txt');
-const conditionTxt = document.querySelector('condition-txt');
-const humidityValueTxt = document.querySelector('humidity-value-txt');
-const windValueTxt = document.querySelector('wind-value-txt');
-const weatherSummaryImg = document.querySelector('weather-summary-img');
-const currentDateTxt = document.querySelector('current-date-txt');
+const cityTxt = document.querySelector('.city-txt');
+const tempTxt = document.querySelector('.temp-txt');
+const conditionTxt = document.querySelector('.condition-txt');
+const humidityValueTxt = document.querySelector('.humidity-value-txt');
+const windValueTxt = document.querySelector('.wind-value-txt');
+const weatherSummaryImg = document.querySelector('.weather-summary-img');
+const currentDateTxt = document.querySelector('.current-date-txt');
 
 searchButton.addEventListener('click', () => {
   if (cityInput.value.trim() != '') {
@@ -37,6 +37,17 @@ async function fetchData(endPoint, city) {
   return response.json();
 }
 
+function getWeatherIcon(id) {
+  console.log(id)
+  if (id <= 232) return 'thunderstorm.svg';
+  if (id <= 321) return 'drizzle.svg';
+  if (id <= 531) return 'rain.svg';
+  if (id <= 622) return 'snow.svg';
+  if (id <= 781) return 'atmosphere.svg';
+  if (id == 800) return 'clear.svg';
+  if (id <= 804) return 'clouds.svg';
+}
+
 async function updateWeatherInfo(city) {
   const weatherData = await fetchData('weather', city);
   
@@ -47,15 +58,19 @@ async function updateWeatherInfo(city) {
   console.log(weatherData)
 
   const {
-    name: country,
+    name: location,
     main: {temp, humidity},
     weather: [{id, main}],
     wind: {speed}
   } = weatherData
 
-  cityTxt.textContent = country
-  tempTxt.textContent = temp + ' °C'
+  cityTxt.textContent = location;
+  tempTxt.textContent = Math.round(temp) + ' °C';
+  conditionTxt.textContent = main;
+  humidityValueTxt.textContent = humidity + '%';
+  windValueTxt.textContent = speed + ' M/s';
 
+  weatherSummaryImg.src = `../assets/${getWeatherIcon(id)}`;
   showDisplaySection(weatherInfoSection);
 }
 
