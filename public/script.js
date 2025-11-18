@@ -82,7 +82,14 @@ async function updateWeatherInfo(city) {
 
   currentDateTxt.textContent = getCurrentDate();
   weatherSummaryImg.src = `../assets/${getWeatherIcon(id)}`;
+
+  await updateForecastsInfo(city);
   showDisplaySection(weatherInfoSection);
+}
+
+async function updateForecastsInfo(city) {
+  const forecastsData = await fetchData('forecast', city);
+  console.log(forecastsData);
 }
 
 function showDisplaySection(section) {
