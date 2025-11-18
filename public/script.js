@@ -48,6 +48,16 @@ function getWeatherIcon(id) {
   if (id <= 804) return 'clouds.svg';
 }
 
+function getCurrentDate() {
+  const currentDate = new Date();
+  const options = {
+    weekday: 'short',
+    day: '2-digit',
+    month: 'short'
+  }
+  return currentDate.toLocaleDateString('en-GB', options);
+}
+
 async function updateWeatherInfo(city) {
   const weatherData = await fetchData('weather', city);
   
@@ -70,6 +80,7 @@ async function updateWeatherInfo(city) {
   humidityValueTxt.textContent = humidity + '%';
   windValueTxt.textContent = speed + ' M/s';
 
+  currentDateTxt.textContent = getCurrentDate();
   weatherSummaryImg.src = `../assets/${getWeatherIcon(id)}`;
   showDisplaySection(weatherInfoSection);
 }
