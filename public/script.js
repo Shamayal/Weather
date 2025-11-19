@@ -15,6 +15,8 @@ const windValueTxt = document.querySelector('.wind-value-txt');
 const weatherSummaryImg = document.querySelector('.weather-summary-img');
 const currentDateTxt = document.querySelector('.current-date-txt');
 
+const forecastItemsContainer = document.querySelector('.forecast-items-container');
+
 searchButton.addEventListener('click', () => {
   if (cityInput.value.trim() != '') {
     updateWeatherInfo(cityInput.value);
@@ -89,7 +91,38 @@ async function updateWeatherInfo(city) {
 
 async function updateForecastsInfo(city) {
   const forecastsData = await fetchData('forecast', city);
+
+  const timeTaken = '12:00:00';
+  const todayDate = new Date().toISOString().split('T')[0];
+
+  // forecastItemsContainer.innerHTML = ''
+  forecastsData.list.forEach(forecastWeather => {
+    if (forecastWeather.dt_txt.includes(timeTaken) && !forecastWeather.dt_txt.includes(todayDate)) {
+      console.log(forecastWeather);
+      updateForecastItems(forecastWeather);
+    }
+  })
+  console.log(todayDate);
   console.log(forecastsData);
+}
+
+function updateForecastItems(weatherData) {
+  console.log('weather data ' + weatherData);
+  const {
+    dt_txt: date,
+    weather: [{ id}],
+    main: { temp }
+  } = weatherData
+
+  const forecastItem = `
+    <div class="forecast-item">
+      <h5 class="forecast-item-date regular-txt">05 Aug</h5>
+      <img src="../assets/${getWeatherIcon(id)}" class="forecast-item-img">
+      <h5 class="forecast-item-temp">${Math.round(temp)} °C</h5>
+    </div>
+  `
+
+  forecastItemsContainer.insertAdjacentHTML('beforeend', forecastItem)
 }
 
 function showDisplaySection(section) {
