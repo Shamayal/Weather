@@ -1,4 +1,4 @@
-const apiKey = API_KEY;
+const apiKey = 'ce9b70eb9912267231396c7c83b9ac66';
 
 const cityInput = document.querySelector('.city-input');
 const searchButton = document.querySelector('.search-btn');
@@ -40,7 +40,6 @@ async function fetchData(endPoint, city) {
 }
 
 function getWeatherIcon(id) {
-  console.log(id)
   if (id <= 232) return 'thunderstorm.svg';
   if (id <= 321) return 'drizzle.svg';
   if (id <= 531) return 'rain.svg';
@@ -67,7 +66,6 @@ async function updateWeatherInfo(city) {
     showDisplaySection(notFoundSection);
     return;
   }
-  console.log(weatherData)
 
   const {
     name: location,
@@ -98,16 +96,12 @@ async function updateForecastsInfo(city) {
   forecastItemsContainer.innerHTML = ''
   forecastsData.list.forEach(forecastWeather => {
     if (forecastWeather.dt_txt.includes(timeTaken) && !forecastWeather.dt_txt.includes(todayDate)) {
-      console.log(forecastWeather);
       updateForecastItems(forecastWeather);
     }
   })
-  console.log(todayDate);
-  console.log(forecastsData);
 }
 
 function updateForecastItems(weatherData) {
-  console.log('weather data ' + weatherData);
   const {
     dt_txt: date,
     weather: [{ id}],
@@ -129,7 +123,6 @@ function updateForecastItems(weatherData) {
       <h5 class="forecast-item-temp">${Math.round(temp)} °C</h5>
     </div>
   `
-
   forecastItemsContainer.insertAdjacentHTML('beforeend', forecastItem)
 }
 
