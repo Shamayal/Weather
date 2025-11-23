@@ -83,7 +83,7 @@ async function updateWeatherInfo(city) {
   windValueTxt.textContent = speed + " M/s";
 
   currentDateTxt.textContent = getCurrentDate();
-  weatherSummaryImg.src = `../assets/${getWeatherIcon(id)}`;
+  weatherSummaryImg.src = `assets/${getWeatherIcon(id)}`;
 
   await updateForecastsInfo(city);
   showDisplaySection(weatherInfoSection);
@@ -124,7 +124,7 @@ function updateForecastItems(weatherData) {
   const forecastItem = `
     <div class="forecast-item">
       <h5 class="forecast-item-date regular-txt">${dateResult}</h5>
-      <img src="../assets/${getWeatherIcon(id)}" class="forecast-item-img">
+      <img src="assets/${getWeatherIcon(id)}" class="forecast-item-img">
       <h5 class="forecast-item-temp">${Math.round(temp)} °C</h5>
     </div>
   `;
