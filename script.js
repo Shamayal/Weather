@@ -118,7 +118,6 @@ function updateForecastItems(weatherData) {
     day: "2-digit",
     month: "short",
   };
-
   const dateResult = dateTaken.toLocaleDateString("en-US", dateOption);
 
   const forecastItem = `
